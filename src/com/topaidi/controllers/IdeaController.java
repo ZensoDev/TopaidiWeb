@@ -86,7 +86,7 @@ public class IdeaController extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 		int idIdea = Integer.parseInt(request.getParameter("id"));
-		Member member = new Member(5);
+		Member member = new Member(1);
 		Category cat = new Category(1);
 		String title = request.getParameter("title");
 		String photo = request.getParameter("photo");
