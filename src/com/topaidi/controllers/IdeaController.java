@@ -1,114 +1,90 @@
 package com.topaidi.controllers;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.cgi.dao.CategoryDao;
 import com.cgi.dao.IdeaDao;
-import com.cgi.dao.IdeaDaoImpl;
 import com.cgi.model.Category;
 import com.cgi.model.Idea;
-import com.cgi.model.Member;
+import com.topaidi.validator.IdeaValidator;
 
 
-/**
- * Servlet implementation class IdeaController
- */
-@WebServlet("/ideaController")
-public class IdeaController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	IdeaDao idao = new IdeaDaoImpl();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public IdeaController() {
-        super();
-        
-    }
+@Controller
+@RequestMapping("/ideas")
+public class IdeaController {
+	@Autowired
+	IdeaDao ideaDao;
+	@Autowired
+	CategoryDao catDao;
+	
+	
+	@GetMapping("/list")
+	public String home(Model m) {
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String action = request.getParameter("action");
-		int id;
-		Idea idea = new Idea();
-		
-		
-		if (action == null) {
-			action = "list";
-		}
-		switch (action) {
-		case "list":
-		List<Idea> ideas = idao.findAll();
-		request.setAttribute("ideasList", ideas);
-		request.getRequestDispatcher("/pages/idea/IdeaList.jsp").forward(request, response);
-		break;
-		
-		case "delete":
-			id = Integer.parseInt(request.getParameter("id"));
-			idao.deleteByKey(id);
-			response.sendRedirect("ideaController?action=list");
-			break;
-			
-		case "new" :
-			idea = new Idea();
-			 request.setAttribute("ideaObj",idea);
-			request.getRequestDispatcher("/pages/idea/IdeaForm.jsp").forward(request, response);	
-			break;
-			
-		case "edit":
-			id = Integer.parseInt(request.getParameter("id"));
-			idea = idao.findByKey(id);
-			request.setAttribute("ideaObj",idea);
-			request.getRequestDispatcher("/pages/idea/IdeaForm.jsp").forward(request, response);	
-			break;
-			
-		}
-		
-		
+		m.addAttribute("IdeasList", ideaDao.findAll());
+
+		return "idea/ideaList";
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		try {
-		int idIdea = Integer.parseInt(request.getParameter("id"));
-		Member member = new Member(1);
-		Category cat = new Category(1);
-		String title = request.getParameter("title");
-		String photo = request.getParameter("photo");
-		String description = request.getParameter("description");
-		boolean state = Boolean.parseBoolean(request.getParameter("state"));
-		String dateParam = request.getParameter("date");
-		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateParam);
+	@GetMapping("/add")
+	public String insert(Model m) {
 
-		Idea idea = new Idea(idIdea, member, cat, title, photo, description, state, date);
-				
-		if (idIdea == 0) {
-			idao.insert(idea);
-		}else {
-			idea.setIdIdea(idIdea);
-			idao.update(idea);
-			
-		}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		response.sendRedirect("ideaController?action=list");
+		m.addAttribute("Ideaform", new Idea());
+
+
+		return "idea/addIdea";
 	}
 
+	@PostMapping("/processForm")
+	public String subscribe(@ModelAttribute("Ideaform") Idea idea, BindingResult result, Model m) {
+		new IdeaValidator().validate(idea, result);
+		if (result.hasErrors()) {
+			return "add";
+		} else {
+			if (idea.getIdIdea() == 0) {
+				ideaDao.insert(idea);
+			} else {
+				ideaDao.update(idea);
+			}
+			return "redirect:/ideas/list";
+		}
+	}
+
+	@GetMapping("/edit/{idIdea}")
+	public String edit(@PathVariable(value = "idIdea") String idIdea, Model m) {
+
+		Idea Idea = ideaDao.findByKey(Integer.parseInt(idIdea));
+		m.addAttribute("Ideaform", Idea);
+
+		return "idea/addIdea";
+
+	}
+	
+	@GetMapping("/list/{idCat}")
+	public String edit(@PathVariable(value = "idCat") int idCat, Model m) {
+		
+		Category cat = catDao.findByKey(idCat);
+		m.addAttribute("IdeaCat", cat);
+		
+		return "idea/ideaCat";
+		
+	}
+	
+
+	@GetMapping("/delete/{idIdea}")
+	public String find(Model m, @PathVariable(value = "idIdea") int idIdea) {
+
+		ideaDao.delete(ideaDao.findByKey(idIdea));
+
+		return "redirect:/ideas/list";
+	}
+	
 }
