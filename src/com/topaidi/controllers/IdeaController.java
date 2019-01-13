@@ -28,18 +28,8 @@ import com.topaidi.validator.IdeaValidator;
 public class IdeaController {
 	@Autowired
 	IdeaDao ideaDao;
-	//@Autowired
-	//CategoryDao catDao;
-
-
-
-
-@InitBinder
-public void initBinder(final WebDataBinder binder){
-  final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); 
-  binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-}
-
+	@Autowired
+	CategoryDao catDao;
 
 	
 	@GetMapping("/list")
@@ -86,22 +76,22 @@ public void initBinder(final WebDataBinder binder){
 	@GetMapping("/show/{idIdea}")
 	public String show(@PathVariable(value = "idIdea") String idIdea, Model m) {
 		
-		Idea Idea = ideaDao.findByKey(Integer.parseInt(idIdea));
-		m.addAttribute("IdeaShow", Idea);
+		Idea idea = ideaDao.findByKey(Integer.parseInt(idIdea));
+		m.addAttribute("IdeaShow", idea);
 		
 		return "idea/ideaIndiv";
 		
 	}
 	
-//	@GetMapping("/list/{idCat}")
-//	public String edit(@PathVariable(value = "idCat") int idCat, Model m) {
-//		
-//		Category cat = catDao.findByKey(idCat);
-//		m.addAttribute("IdeaCat", cat);
-//		
-//		return "idea/ideaCat";
-//		
-//	}
+	@GetMapping("/list/{idCat}")
+	public String edit(@PathVariable(value = "idCat") int idCat, Model m) {
+		
+		Category cat = catDao.findByKey(idCat);
+		m.addAttribute("IdeaCat", cat);
+		
+		return "idea/ideaCat";
+		
+	}
 	
 
 	@GetMapping("/delete/{idIdea}")

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,10 +34,11 @@
 						<td>${idea.title}</td>
 						<td>${idea.member}</td>
 						<td>${idea.category}</td>
-						<td>${idea.descritpion}</td>
+						<td>${idea.description}</td>
 						<td>${idea.date}</td>
 						<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
 						<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>
+						<td><a class="btn btn-primary" href="show/${idea.idIdea}">Show idea</a></td>
 					</tr>
 					</c:forEach>
 			</tbody>

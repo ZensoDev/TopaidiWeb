@@ -5,7 +5,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
-
 <spring:url value="/ideas/processForm" var="processUrl" />
 
 <form:form method="post" action="${processUrl}" modelAttribute="ideaform">
@@ -19,7 +18,7 @@
 	</div>
 	<div> 
 	<form:label path="category.idCat">Category</form:label>
-		<form:select path="category.idCat" items="${ideas}" itemLabel="title" itemValue="id" class="form-control"/>
+		<form:select path="category.idCat" items="${categoryList}" itemLabel="name" itemValue="id" class="form-control"/>
 	</div>	
 	<div class="form-group">
 	<form:errors path="description" cssStyle="color:red;" />
