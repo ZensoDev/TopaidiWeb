@@ -24,7 +24,6 @@
 					<th>Title</th>
 					<th>Member</th>
 					<th>Category</th>
-					<th>Description</th>
 					<th>Date</th>
 				</tr>
 			</thead>
@@ -32,9 +31,8 @@
 				<c:forEach items="${IdeasList}" var="idea">
 					<tr>
 						<td>${idea.title}</td>
-						<td>${idea.member}</td>
-						<td>${idea.category}</td>
-						<td>${idea.description}</td>
+						<td>${idea.member.firstName}</td>
+						<td>${idea.category.name}</td>
 						<td>${idea.date}</td>
 						<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
 						<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>

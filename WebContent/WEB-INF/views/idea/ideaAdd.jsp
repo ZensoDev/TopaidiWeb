@@ -3,9 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <spring:url value="/ideas/processForm" var="processUrl" />
+<c:set var="now" value="<%=new java.util.Date()%>" />
 
 <form:form method="post" action="${processUrl}" modelAttribute="ideaform">
 	<div class="form-group">
@@ -31,8 +33,8 @@
 	</div>
 	<div class="form-group">
 	<form:errors path="date" cssStyle="color:red;" />
-		<form:label path="date">Date</form:label>
-		<form:input type="date" path="date" />
+		<fmt:formatDate type="date"  value="${now}" var="formatdate" />
+		<form:input path="date" type="hidden" value="${formatdate}"/>
 	</div>
 		
 	<input type="submit" value="Add">
