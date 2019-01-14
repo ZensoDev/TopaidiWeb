@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cgi.dao.CategoryDao;
+import com.cgi.dao.IdeaDao;
 import com.cgi.model.Category;
+import com.cgi.model.Idea;
 import com.topaidi.validator.CategoryValidator;
 
 
@@ -26,11 +28,14 @@ public class CategoryController {
 	@Autowired
 	CategoryDao cDao;
 	
+	@Autowired
+	IdeaDao iDao;
+	
 	/*
 	 * Method to display categories
 	 */
 	@GetMapping("/list")
-	public String list(Model model, HttpSession session) {
+	public String list(Model model) {
 		List<Category> categoriesList = cDao.findAll();
 		model.addAttribute("categories", categoriesList);
 		return "categories/categorypage";
@@ -41,7 +46,7 @@ public class CategoryController {
 	 * */
 	
 	@GetMapping("/add")
-	public String form(Model model, HttpSession session) {
+	public String form(Model model) {
 
 		Category c = new Category();
 		model.addAttribute("categoryForm", c);
@@ -56,7 +61,7 @@ public class CategoryController {
 	public String update(
 			@PathVariable("idCategory") int idC, Model model){
 		Category category = cDao.findByKey(idC);
-		model.addAttribute("artistForm", category);
+		model.addAttribute("categoryForm", category);
 		return "categories/categoryformpage"; 
 		
 	}
