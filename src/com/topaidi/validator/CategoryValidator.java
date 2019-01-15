@@ -17,10 +17,10 @@ public class CategoryValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		Category c = (Category) target;
-		ValidationUtils.rejectIfEmpty(errors, "name", "c.name.empty", "Le champ du nom est vide");
+		ValidationUtils.rejectIfEmpty(errors, "name", "c.name.empty", "Le titre de la catégorie est vide");
 		//voir par quoi remplacer Yzma
-		if(c.getName().equalsIgnoreCase("Yzma"))
-		{errors.rejectValue("name", "c.name.notYzma", "Une catégorie porte déjà ce nom");}
+		if(c.getName().contentEquals("cat"))
+		{errors.rejectValue("name", "c.name", "Une catégorie porte déjà ce nom");}
 	}
 
 }
