@@ -30,13 +30,13 @@
 			<tbody>
 			
 				<tr>
-					<td>${idea.title}</td>
-					<td>${idea.member}</td>
-					<td>${idea.category}</td>
-					<td>${idea.description}</td>
-					<td>${idea.date}</td>
-					<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
-					<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>
+					<td>${IdeaShow.title}</td>
+					<td>${IdeaShow.member.firstName}</td>
+					<td>${IdeaShow.category}</td>
+					<td>${IdeaShow.description}</td>
+					<td>${IdeaShow.date}</td>
+					<td><a class="btn btn-primary" href="../edit/${IdeaShow.idIdea}">Edit</a></td>
+					<td><a class="btn btn-primary" href="../delete/${IdeaShow.idIdea}">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>

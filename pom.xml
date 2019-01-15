@@ -85,6 +85,11 @@
 			<version>2.2.11</version>
 		</dependency>
 		<dependency>
+	            <groupId>log4j</groupId>
+	            <artifactId>log4j</artifactId>
+	            <version>1.2.17</version>
+	        </dependency>
+		<dependency>
 			<groupId>Topaidi</groupId>
 			<artifactId>Topaidi</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

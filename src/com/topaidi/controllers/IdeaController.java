@@ -28,6 +28,7 @@ import com.topaidi.validator.IdeaValidator;
 public class IdeaController {
 	@Autowired
 	IdeaDao ideaDao;
+	
 	@Autowired
 	CategoryDao catDao;
 
@@ -44,6 +45,7 @@ public class IdeaController {
 	public String insert(Model m) {
 
 		m.addAttribute("ideaform", new Idea());
+		m.addAttribute("categories", catDao.findAll());
 
 
 		return "idea/ideaAdd";
@@ -74,7 +76,7 @@ public class IdeaController {
 
 	}
 	@GetMapping("/show/{idIdea}")
-	public String show(@PathVariable(value = "idIdea") String idIdea, Model m) {
+	public String showIdea(@PathVariable(value = "idIdea") String idIdea, Model m) {
 		
 		Idea idea = ideaDao.findByKey(Integer.parseInt(idIdea));
 		m.addAttribute("IdeaShow", idea);
@@ -84,9 +86,10 @@ public class IdeaController {
 	}
 	
 	@GetMapping("/list/{idCat}")
-	public String edit(@PathVariable(value = "idCat") int idCat, Model m) {
+	public String showIdeaCat(@PathVariable(value = "idCat") int idCat, Model m) {
 		
 		Category cat = catDao.findByKey(idCat);
+		
 		m.addAttribute("IdeaCat", cat);
 		
 		return "idea/ideaCat";
