@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,21 +24,21 @@
 					<th>Title</th>
 					<th>Member</th>
 					<th>Category</th>
-					<th>Description</th>
 					<th>Date</th>
 				</tr>
 			</thead>
 			<tbody>
-			
-				<tr>
-					<td>${IdeaShow.title}</td>
-					<td>${IdeaShow.member.firstName}</td>
-					<td>${IdeaShow.category}</td>
-					<td>${IdeaShow.description}</td>
-					<td>${IdeaShow.date}</td>
-					<td><a class="btn btn-primary" href="../edit/${IdeaShow.idIdea}">Edit</a></td>
-					<td><a class="btn btn-primary" href="../delete/${IdeaShow.idIdea}">Delete</a></td>
-				</tr>
+				<c:forEach items="${IdeasList}" var="idea">
+					<tr>
+						<td>${idea.title}</td>
+						<td>${idea.member.firstName}</td>
+						<td>${idea.category.name}</td>
+						<td>${idea.date}</td>
+						<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
+						<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>
+						<td><a class="btn btn-primary" href="show/${idea.idIdea}">Show idea</a></td>
+					</tr>
+					</c:forEach>
 			</tbody>
 		</table>
 		</div>

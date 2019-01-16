@@ -1,5 +1,8 @@
 package com.topaidi.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -43,12 +46,13 @@ public class CommentController {
 	}
 	
 	@GetMapping("/insert/{idIdea}")
-	public String insert(Model model, @PathVariable(value = "idIdea") int id, HttpSession session) {
-		Member member = mDao.findByKey(Integer.parseInt(session.getId()));
-		Idea idea = iDao.findByKey(id);
+	public String insert(Model model, @PathVariable(value = "idIdea") int idIdea) {
+		//Member member = mDao.findByKey(Integer.parseInt(session.getId()));
+		Idea idea = iDao.findByKey(idIdea);
 		Comment com = new Comment();
-		com.setMember(member);
-		com.setIdea(idea);
+
+		//com.setMember(member);
+		com.setIdea(idea); 
 		model.addAttribute("comform", com);
 		return "comment/comForm";
 	}
