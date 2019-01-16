@@ -22,7 +22,6 @@ import com.cgi.dao.MemberDao;
 import com.cgi.model.Category;
 import com.cgi.model.Idea;
 import com.cgi.model.Member;
-import com.topaidi.validator.IdeaValidator;
 import com.topaidi.validator.MemberValidator;
 
 

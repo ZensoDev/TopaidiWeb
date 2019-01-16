@@ -17,31 +17,45 @@
 
 <body>
 	<div class="container-fluid">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Title</th>
-					<th>Member</th>
-					<th>Category</th>
-					<th>Description</th>
-					<th>Date</th>
-				</tr>
-			</thead>
-			<tbody>
-			
-				<tr>
-					<td>${IdeaShow.title}</td>
-					<td>${IdeaShow.member.firstName}</td>
-					<td>${IdeaShow.category}</td>
-					<td>${IdeaShow.description}</td>
-					<td>${IdeaShow.date}</td>
-					<td><a class="btn btn-primary" href="../edit/${IdeaShow.idIdea}">Edit</a></td>
-					<td><a class="btn btn-primary" href="../delete/${IdeaShow.idIdea}">Delete</a></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">${IdeaShow.title}</div>
+			<div class="col-1"></div>
 		</div>
-		<br> <br> <br> <br> <br> <br>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">by ${IdeaShow.member.firstName}</div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">${IdeaShow.category}</div>
+			<div class="col-1"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">${IdeaShow.description}</div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">${IdeaShow.date}</div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-5"><a class="btn btn-primary" href="../edit/${IdeaShow.idIdea}">Edit</a></div>
+			<div class="col-5"><a class="btn btn-primary" href="../delete/${IdeaShow.idIdea}">Delete</a></div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-3"></div>
+			<div class="col-3"><a class="btn btn-primary" href="../VoteController/add/${voteEnum}">Top</a></div>
+			<div class="col-3">Flop</div>
+			<div class="col-3"></div>
+		</div>
+	</div>
 </body>
 
 </html>
