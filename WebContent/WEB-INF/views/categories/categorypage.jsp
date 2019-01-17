@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Gestion des catégories</title>
 </head>
-<body>
+<body><jsp:include page="../include/adminNav.jsp"/>
 <ul>
  		<c:forEach items="${categories}" var="cat">
  				<li>${cat.idCat} : ${cat.name} <a href="delete/${cat.idCat}">Suppression</a> <a href="update/${cat.idCat}">Edit</a>

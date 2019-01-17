@@ -11,6 +11,5 @@ import com.cgi.config.JpaConfig;
 @Import({JpaConfig.class , WebMVCConfig.class})
 public class ContextConfig {
 	
-
 }
 

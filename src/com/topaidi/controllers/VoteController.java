@@ -31,26 +31,6 @@ public class VoteController {
 	@Autowired
 	MemberDao mDao;
 	
-	/*
-	 * Method to display the top classement
-	 */
-	@GetMapping("/top")
-	public String topClassement(Model model) {
-		model.addAttribute("tops", vDao.topsClassement());
-		return "classement/top";
-	}
-	
-	/*
-	 * Method to display the buzz classement
-	 */
-	@GetMapping("/buzz")
-	public String buzzClassement(Model model) {
-		//List<Vote> voteBuzzList = ((VoteDaoImpl) vDaoImpl).buzzClassement();
-	//	List<Vote> voteBuzzList = ((VoteDaoImpl) vDao).buzzClassement();
-	
-		model.addAttribute("buzz", vDao.buzzClassement());
-		return "classement/buzz";
-	}
 	
 	// faire le get et dans jsp bouton top, flop ou rien quand par d�faut
 	@GetMapping("/add/{idIdea}/{voteEnum}")
