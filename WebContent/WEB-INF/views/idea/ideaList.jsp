@@ -37,9 +37,11 @@
 						<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
 						<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>
 						<td><a class="btn btn-primary" href="show/${idea.idIdea}">Show idea</a></td>
-					</tr>
 					</c:forEach>
+						<td><a class="btn btn-primary" href="add">Add a new idea</a></td>
+						</tr>
 			</tbody>
+						
 		</table>
 		</div>
 		<br> <br> <br> <br> <br> <br>

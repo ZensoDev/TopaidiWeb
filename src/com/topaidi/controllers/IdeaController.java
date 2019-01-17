@@ -1,19 +1,26 @@
 package com.topaidi.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cgi.dao.CategoryDao;
+import com.cgi.dao.CommentDao;
 import com.cgi.dao.IdeaDao;
 import com.cgi.model.Category;
+import com.cgi.model.Comment;
 import com.cgi.model.Idea;
 import com.topaidi.validator.IdeaValidator;
 
@@ -27,6 +34,8 @@ public class IdeaController {
 	@Autowired
 	CategoryDao catDao;
 
+	@Autowired
+	CommentDao comDao;
 	
 	@GetMapping("/list")
 	public String home(Model m) {
@@ -49,6 +58,8 @@ public class IdeaController {
 	@PostMapping("/processForm")
 	public String subscribe(@ModelAttribute("ideaform") Idea idea, BindingResult result, Model m) {
 		new IdeaValidator().validate(idea, result);
+		m.addAttribute("categories", catDao.findAll());
+		
 		if (result.hasErrors()) {
 			return "idea/ideaAdd";
 		} else {
@@ -72,8 +83,9 @@ public class IdeaController {
 	}
 	@GetMapping("/show/{idIdea}")
 	public String showIdea(@PathVariable(value = "idIdea") String idIdea, Model m) {
-		
+		Comment com = new Comment();
 		Idea idea = ideaDao.findByKey(Integer.parseInt(idIdea));
+		com.setIdea(idea);
 		m.addAttribute("IdeaShow", idea);
 		
 		return "idea/ideaIndiv";
@@ -102,3 +114,4 @@ public class IdeaController {
 	
 	
 }
+

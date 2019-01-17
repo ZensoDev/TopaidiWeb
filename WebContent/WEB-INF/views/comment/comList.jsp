@@ -26,7 +26,7 @@
 						<th scope="col">Id</th>
 						<th scope="col">Date</th>
 						<th scope="col">Commentaire</th>
-						<th scope="col">Id member</th>
+						<th scope="col">Member Name</th>
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
@@ -36,18 +36,18 @@
 							<td>${comment.idCom}</td>
 							<td>${comment.date}</td>
 							<td>${comment.text}</td>
-							<td>${comment.member}</td>
+							<td>${comment.member.firstName}</td>
 							<td><a href="delete/${comment.idCom}"
 								class="btn btn-primary btn-lg active" role="button"
-								aria-pressed="true"><i class="fas fa-trash-alt"></i></a> <a
-								href="edit/${comment.idCom}"
+								aria-pressed="true"><i class="fas fa-trash-alt"></i></a></td>
+								 <td><a	href="edit/${comment.idCom}"
 								class="btn btn-danger btn-lg active" role="button"
-								aria-pressed="true"><i class="fas fa-edit"></i></a> <a
+								aria-pressed="true"><i class="fas fa-edit"></i></a></td>
+								<td> <a
 								href="../comment/insert/${comment.idCom}"
 								class="btn btn-secondary btn-lg active" role="button"
 								aria-pressed="true"><i class="fas fa-compact-disc fa-spin"></i></a>
 							</td>
-
 						</tr>
 					</c:forEach>
 				</tbody>

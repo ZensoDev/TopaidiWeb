@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cgi.dao.IdeaDao;
 import com.cgi.dao.MemberDao;
-import com.cgi.dao.VoteDao;
 import com.cgi.dao.VoteDaoImpl;
 import com.cgi.enumeration.VoteEnum;
 import com.cgi.model.Idea;
 import com.cgi.model.Vote;
+import com.cgi.model.Member;
 
 
 @Controller
 @RequestMapping("/votes")
 public class VoteController {
+	
 	@Autowired
-	VoteDao vDao;
+	VoteDaoImpl vDao;
 	
 	@Autowired
 	IdeaDao iDao;
@@ -35,19 +36,23 @@ public class VoteController {
 	// faire le get et dans jsp bouton top, flop ou rien quand par d�faut
 	@GetMapping("/add/{idIdea}/{voteEnum}")
 	public String add(@PathVariable(value = "voteEnum") VoteEnum voteEnum,@PathVariable(value = "idIdea") int idIdea, Model model) {
+		Member member = mDao.findByKey(1);
 		Idea idea = iDao.findByKey(idIdea);
 		Vote vote = new Vote();
 		vote.setIdea(idea);
+		vote.setMember(member);
 		
 		if (voteEnum.getMark()==1) {
-			vote.getVoteEnum().setMark(voteEnum.getMark());
+			voteEnum.setMark(1);
+			vote.setVoteEnum(voteEnum);
 			vDao.insert(vote);
-		}else {
-			vote.getVoteEnum().setMark(voteEnum.getMark());
+		}else if(voteEnum.getMark()==2) {
+			voteEnum.setMark(2);
+			vote.setVoteEnum(voteEnum);
 			vDao.insert(vote);
 		}
 	
-		return "redirect:/ideas/ideaIndiv";
+		return "redirect:/ideas/show/{idIdea}";
 	}
 
 }

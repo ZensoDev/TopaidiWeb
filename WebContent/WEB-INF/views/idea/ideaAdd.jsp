@@ -22,7 +22,7 @@
 	<div>
 		<form:select path="category">
 			<form:options items="${categories}" itemLabel="name"
-				itemValue="idCat" />
+				itemValue="name" />
 		</form:select>
 	</div>
 	<div class="form-group">

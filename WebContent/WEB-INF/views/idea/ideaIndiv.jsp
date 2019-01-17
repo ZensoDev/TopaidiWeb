@@ -16,15 +16,19 @@
 </head>
 
 <body>
+	<spring:url var="comList" value="/comment/list/${idIdea}" 
+		context="">
+		<spring:param name="idIdea" value="${IdeaShow.idIdea}" />
+	</spring:url>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-1"></div>
-			<div class="col-10">${IdeaShow.title}</div>
+			<div class="col-sm-10 text-center">${IdeaShow.title}</div>
 			<div class="col-1"></div>
 		</div>
 		<div class="row">
 			<div class="col-1"></div>
-			<div class="col-10">by ${IdeaShow.member.firstName}</div>
+			<div class="col-10 text-center">by ${IdeaShow.member.firstName}</div>
 			<div class="col-1"></div>
 		</div>
 		<div class="row">
@@ -45,17 +49,32 @@
 		</div>
 		<div class="row">
 			<div class="col-1"></div>
-			<div class="col-5"><a class="btn btn-primary" href="../edit/${IdeaShow.idIdea}">Edit</a></div>
-			<div class="col-5"><a class="btn btn-primary" href="../delete/${IdeaShow.idIdea}">Delete</a></div>
+			<div class="col-5">
+				<a class="btn btn-primary" href="../edit/${IdeaShow.idIdea}">Edit</a>
+			</div>
+			<div class="col-5">
+				<a class="btn btn-primary" href="../delete/${IdeaShow.idIdea}">Delete</a>
+			</div>
 			<div class="col-1"></div>
 		</div>
 		<div class="row">
 			<div class="col-3"></div>
-			<div class="col-3"><a class="btn btn-primary" href="../VoteController/add/${voteEnum}">Top</a></div>
-			<div class="col-3">Flop</div>
+			<div class="col-3">
+				<a class="btn btn-primary"
+					href="../../votes/add/${IdeaShow.idIdea}/Top">Top</a>
+			</div>
+			<div class="col-3">
+				<a class="btn btn-primary"
+					href="../../votes/add/${IdeaShow.idIdea}/Flop">Flop</a>
+			</div>
 			<div class="col-3"></div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-3"></div>
+			<div class="col-6"><jsp:include page="${comList}/>" />
+				<div class="col-3"></div>
+			</div>
+		</div>
 </body>
 
 </html>
