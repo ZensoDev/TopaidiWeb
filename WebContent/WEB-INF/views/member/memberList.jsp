@@ -21,22 +21,23 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Title</th>
-					<th>Member</th>
-					<th>Category</th>
-					<th>Date</th>
+					<th>Member ID</th>
+					<th>Last Name</th>
+					<th>First Name</th>
+					<th>Login Mail</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${IdeasList}" var="idea">
+				<c:forEach items="${MembersList}" var="member">
 					<tr>
-						<td>${idea.title}</td>
-						<td>${idea.member.firstName}</td>
-						<td>${idea.category.name}</td>
-						<td>${idea.date}</td>
-						<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
-						<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>
-						<td><a class="btn btn-primary" href="show/${idea.idIdea}">Show idea</a></td>
+						<td>${member.idMember}</td>
+						<td>${member.firstName}</td>
+						<td>${member.firstName}</td>
+						<td>${member.loginMail}</td>
+						<td><a class="btn btn-primary" href="edit/${member.idMember}">Edit</a>
+						<a class="btn btn-primary" href="delete/${member.idMember}">Delete</a>
+						<a class="btn btn-primary" href="show/${member.idMember}">Show idea</a></td>
 					</tr>
 					</c:forEach>
 			</tbody>

@@ -7,7 +7,6 @@
 
 
 <spring:url value="/members/processForm" var="processUrl" />
-<c:set var="now" value="<%=new java.util.Date()%>" />
 
 <form:form method="post" action="${processUrl}"
 	modelAttribute="memberform">
