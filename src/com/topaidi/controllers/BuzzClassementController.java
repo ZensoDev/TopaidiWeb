@@ -20,7 +20,7 @@ public class BuzzClassementController {
 	 */
 	@GetMapping("/buzz")
 	public String buzzClassement(Model model) {
-		model.addAttribute("buzz", bDao.buzzClassement());
+		model.addAttribute("buzz", bDao.buzzRanking());
 		return "classement/buzz";
 	}
 

@@ -14,7 +14,7 @@
  		
   		<ul>
  		<c:forEach items="${tops}" var="top">
- 				<li> ${top.idea_ID} : ${top.NB_Vote}
+ 				<li> ${top.idIdea} : ${top.title}
  				</li>
  			</c:forEach>
  		</ul> 

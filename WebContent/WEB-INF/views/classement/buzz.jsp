@@ -14,7 +14,7 @@
 <ul>
  		<c:forEach items="${buzz}" var="buzz">
  				<li>
- 				${buzz.idea_iD} : ${buzz.NB_Votes}
+ 				${buzz.idIdea} : ${buzz.title}
  				</li>
  			</c:forEach>
  		</ul>
