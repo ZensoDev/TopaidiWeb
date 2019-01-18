@@ -15,6 +15,9 @@
 		<form:input path="idIdea" type="hidden" />
 	</div>
 	<div class="form-group">
+		<form:input path="state" type="hidden" value="true"/>
+	</div>
+	<div class="form-group">
 		<form:errors path="title" cssStyle="color:red;" />
 		<form:label path="title">Title</form:label>
 		<form:input path="title" />

@@ -46,8 +46,9 @@ public class CommentController {
 	}
 	
 	@GetMapping("/insert/{idIdea}")
-	public String insert(Model model, @PathVariable(value = "idIdea") int idIdea) {
+	public String insert(Model model, @PathVariable(value = "idIdea") int idIdea, HttpSession session) {
 		//Member member = mDao.findByKey(Integer.parseInt(session.getId()));
+		Member member = (Member) session.getAttribute("member");
 		Idea idea = iDao.findByKey(idIdea);
 		Comment com = new Comment();
 
@@ -58,9 +59,10 @@ public class CommentController {
 	}
 	
 	@PostMapping("/processForm")
-	public String insertComment(Model model, @ModelAttribute("comform") Comment com, BindingResult result) {
+	public String insertComment(Model model, @ModelAttribute("comform") Comment com, HttpSession session,BindingResult result) {
 		new CommentValidator().validate(com, result);
 
+		Member member = (Member) session.getAttribute("member");
 		if (result.hasErrors()) {
 			return "comForm";
 		} else {
@@ -76,7 +78,8 @@ public class CommentController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String edit(Model model, @PathVariable(value = "id") int id) {
+	public String edit(Model model, @PathVariable(value = "id") int id, HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
 		Comment com = comDao.findByKey(id);
 		model.addAttribute("comform", com);
 
