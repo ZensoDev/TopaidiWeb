@@ -16,11 +16,23 @@
 </head>
 
 <body>
+
 	<spring:url var="comList" value="/comment/list/${idIdea}" 
 		context="">
 		<spring:param name="idIdea" value="${IdeaShow.idIdea}" />
 	</spring:url>
+
+
 	<div class="container-fluid">
+	<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">${IdeaShow.title}</h5>
+    <p class="card-text">${IdeaShow.category}<br>
+   <div class="col-10"><div
+		style="width: 150px; height: 90px; background: url('${IdeaShow.photo}'); background-size: contain; background-repeat: no-repeat;"></div>
+			</div> ${IdeaShow.description}</p>
+    <p class="card-text"><small class="text-muted">by ${IdeaShow.member.firstName}</small></p>
+  </div>
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col-sm-10 text-center">${IdeaShow.title}</div>
@@ -28,7 +40,16 @@
 		</div>
 		<div class="row">
 			<div class="col-1"></div>
-			<div class="col-10 text-center">by ${IdeaShow.member.firstName}</div>
+
+			<div class="col-10"><div
+		style="width: 150px; height: 90px; background: url('${IdeaShow.photo}'); background-size: contain; background-repeat: no-repeat;"></div>
+			</div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">by ${IdeaShow.member.firstName}</div>
+
 			<div class="col-1"></div>
 		</div>
 		<div class="row">

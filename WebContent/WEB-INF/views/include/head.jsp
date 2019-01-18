@@ -15,26 +15,15 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Euphoria+Script|Gloria+Hallelujah"
 	rel="stylesheet">
-<link rel="stylesheet" href="<spring:url value="/css/style.css" />" />
-<style type="text/css">
-header { font-family: 'Euphoria Script', cursive; color: white;
-font-size: 4em; background-image:
-url("/images/connectwork.png"); } body { background-color:
-grey; font-family:georgia; color:black; } ul#menu
-li { display: inline; font-size: 20px; padding-left: 25px; } h2 {
-font-weight: bold; text-decoration: underline; } #pond { display: flex;
-background-color: white } #pond1 { display: flex; flex-direction:
-column; } footer{ background-color: gray;} #contact{ color: black;}
-
-section{ display: flex; } #menu1{ padding-top: 20px}
-
-</style>
-
+<link rel="stylesheet" type="text/css" href="/css/header.css"
+	media="screen" />
 <title>Topaidi</title>
 </head>
 
 <body>
-	<header> Topaidi </header>
-	<jsp:include page="menu.jsp" />
-
-	
+	<div class="jumbotron">
+		<div class="logo"></div>
+		<h1 class="display-4">Topaidi</h1>
+		<p class="lead">Bienvenue sur Topaidi, réseau social valorisant les idées innovantes</p>
+		<hr class="my-4">
+	</div>

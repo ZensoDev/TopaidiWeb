@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body><jsp:include page="../include/adminNav.jsp"/>
 	<div class="container-fluid">
 		<table class="table table-hover">
 			<thead>

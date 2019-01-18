@@ -35,7 +35,7 @@ public class CategoryController {
 	 * Method to display categories
 	 */
 	@GetMapping("/list")
-	public String list(Model model) {
+	public String list(HttpSession session, Model model) {
 		List<Category> categoriesList = cDao.findAll();
 		model.addAttribute("categories", categoriesList);
 		return "categories/categorypage";
@@ -46,8 +46,7 @@ public class CategoryController {
 	 * */
 	
 	@GetMapping("/add")
-	public String form(Model model) {
-
+	public String form(HttpSession session, Model model) {
 		Category c = new Category();
 		model.addAttribute("categoryForm", c);
 		return "categories/categoryformpage";
@@ -59,7 +58,7 @@ public class CategoryController {
 	
 	@GetMapping("/update/{idCategory}")
 	public String update(
-			@PathVariable("idCategory") int idC, Model model){
+			@PathVariable("idCategory") int idC, HttpSession session, Model model){
 		Category category = cDao.findByKey(idC);
 		model.addAttribute("categoryForm", category);
 		return "categories/categoryformpage"; 
@@ -71,7 +70,7 @@ public class CategoryController {
 	 */
 	
 	@PostMapping("/processForm")
-	public String updateProcess(@ModelAttribute("categoryForm") Category category, Model model, BindingResult result){
+	public String updateProcess(@ModelAttribute("categoryForm") Category category, HttpSession session, Model model, BindingResult result){
 		new CategoryValidator().validate(category, result);
 		
 		if(result.hasErrors()) {
@@ -96,7 +95,7 @@ public class CategoryController {
 	
 	@GetMapping("/delete/{idCat}") 
 	public String delete(
-			@PathVariable("idCat") int idCategory, Model model)
+			@PathVariable("idCat") int idCategory, HttpSession session, Model model)
 	{ 
 		cDao.delete(cDao.findByKey(idCategory));
 		return "redirect:/categories/list";

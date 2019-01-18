@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cgi.dao.BuzzDao;
-import com.cgi.dao.IdeaDao;
 import com.cgi.dao.TopDao;
-import com.cgi.model.Idea;
 
 @Controller
 @RequestMapping("/classement")

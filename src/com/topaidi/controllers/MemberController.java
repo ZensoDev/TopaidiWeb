@@ -118,4 +118,23 @@ public class MemberController {
 		return "redirect:/members/list";
 	}
 
+	
+//	@GetMapping("activate/{idMember}")
+//	public String activate(Model m, @PathVariable(value = "idMember") int idMember) {
+//		Member member = memberDao.findByKey(idMember);
+//		member.isAdmin().setAdmin(true);
+//		memberDao.insert(member);
+//		return "redirect:/members/list";
+//	}
+//	
+//	@GetMapping("desactivate/{idMember}")
+//	public String desactivate(Model m, @PathVariable(value = "idMember") int idMember) {
+//		Member member = memberDao.findByKey(idMember);
+//		member.isAdmin().setAdmin(false);
+//		memberDao.insert(member);
+//		return "redirect:/members/list";
+//	}
+	
+	
+
 }
