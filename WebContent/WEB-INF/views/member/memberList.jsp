@@ -11,6 +11,7 @@
 <title>Liste des utilisateurs</title>
 <jsp:include page="../include/header.jsp" />
 
+
 	<div class="container-fluid">
 		<table class="table table-hover">
 			<thead>
@@ -30,14 +31,20 @@
 						<td>${member.firstName}</td>
 						<td>${member.loginMail}</td>
 						<td><a class="btn btn-primary" href="edit/${member.idMember}">Edit</a>
-						<a class="btn btn-primary" href="delete/${member.idMember}">Delete</a>
-						<a class="btn btn-primary" href="show/${member.idMember}">Show idea</a></td>
+							<a class="btn btn-primary" href="delete/${member.idMember}">Delete</a>
+							<a class="btn btn-primary" href="show/${member.idMember}">Show
+								idea</a></td>
 					</tr>
-					</c:forEach>
+				</c:forEach>
 			</tbody>
 		</table>
-		</div>
-		<br> <br> <br> <br> <br> <br>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
 
 </html>

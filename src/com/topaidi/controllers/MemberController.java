@@ -104,7 +104,8 @@ public class MemberController {
 			return "member/memberConnect";
 		} else {
 			try {
-				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword())) {
+
+				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword()) == false) {
 					session.setAttribute("member", member);
 					String redirect = null;
 					if(member.isAdmin()) {
@@ -141,6 +142,7 @@ public class MemberController {
 
 		return "redirect:/members/list";
 	}
+
 	
 	@GetMapping("/deconnection")
 	public String deconnect(Model m, HttpSession session) {
@@ -149,6 +151,7 @@ public class MemberController {
 		return "redirect:/welcome/welcome";
 	}
 	
+
 	@GetMapping("activeDesactive/{idMember}")
 	public void activeDesactive(Model m, @PathVariable(value = "idMember") int idMember) {
 		Member member = memberDao.findByKey(idMember);
@@ -158,9 +161,7 @@ public class MemberController {
 			member.setState(true);
 		}		
 	}
-	
 
-	
 	
 
 }

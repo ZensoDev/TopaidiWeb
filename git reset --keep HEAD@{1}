@@ -1,0 +1,53 @@
+[33m31154c8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: pull: Fast-forward
+[33m2179e46[m HEAD@{1}: checkout: moving from 190111category to master
+[33mb477d6a[m[33m ([m[1;32m190111category[m[33m)[m HEAD@{2}: commit: jsp and controller for admin
+[33m2179e46[m HEAD@{3}: checkout: moving from master to 190111category
+[33m2179e46[m HEAD@{4}: checkout: moving from 190111category to master
+[33m2179e46[m HEAD@{5}: reset: moving to HEAD
+[33m2179e46[m HEAD@{6}: checkout: moving from master to 190111category
+[33m2179e46[m HEAD@{7}: merge 190111category: Fast-forward
+[33m16723a3[m HEAD@{8}: checkout: moving from 190111category to master
+[33m2179e46[m HEAD@{9}: commit: welcome page.jsp, admin pages.jsp
+[33m16723a3[m HEAD@{10}: rebase finished: refs/heads/190111category onto 16723a3ef41b87164508321d1bd5bd364bbd61a3
+[33m16723a3[m HEAD@{11}: rebase: checkout master
+[33me771ac7[m HEAD@{12}: checkout: moving from master to 190111category
+[33m16723a3[m HEAD@{13}: pull: Fast-forward
+[33me771ac7[m HEAD@{14}: checkout: moving from 190111category to master
+[33me771ac7[m HEAD@{15}: reset: moving to HEAD
+[33me771ac7[m HEAD@{16}: checkout: moving from master to 190111category
+[33me771ac7[m HEAD@{17}: merge 190111category: Fast-forward
+[33m704486f[m HEAD@{18}: checkout: moving from 190111category to master
+[33me771ac7[m HEAD@{19}: commit: buzz and tops view (controller, jsp), nav barre include in category jsp
+[33m704486f[m HEAD@{20}: rebase finished: refs/heads/190111category onto 704486f6f83fa1517cad0a3e9fe7dbbdca3a32d7
+[33m704486f[m HEAD@{21}: rebase: checkout master
+[33ma003220[m HEAD@{22}: checkout: moving from master to 190111category
+[33m704486f[m HEAD@{23}: pull: Fast-forward
+[33ma003220[m HEAD@{24}: checkout: moving from 190111category to master
+[33ma003220[m HEAD@{25}: reset: moving to HEAD
+[33ma003220[m HEAD@{26}: checkout: moving from master to 190111category
+[33ma003220[m HEAD@{27}: merge 190111category: Fast-forward
+[33m9c87c37[m HEAD@{28}: checkout: moving from 190111category to master
+[33ma003220[m HEAD@{29}: commit: category validator update, vote controller update, views jsp created
+[33m0101f77[m HEAD@{30}: commit: category validator update, vote controller update, views jsp created
+[33m9c87c37[m HEAD@{31}: rebase finished: refs/heads/190111category onto 9c87c371308a629ee0f49af017691c9c5807e82a
+[33m9c87c37[m HEAD@{32}: rebase: checkout master
+[33m7f384e3[m HEAD@{33}: checkout: moving from master to 190111category
+[33m9c87c37[m HEAD@{34}: pull: Fast-forward
+[33m7f384e3[m HEAD@{35}: checkout: moving from 190111category to master
+[33m7f384e3[m HEAD@{36}: reset: moving to HEAD
+[33m7f384e3[m HEAD@{37}: checkout: moving from master to 190111category
+[33m7f384e3[m HEAD@{38}: merge 190111category: Fast-forward
+[33m917391e[m HEAD@{39}: checkout: moving from 190111category to master
+[33m7f384e3[m HEAD@{40}: commit: update controller category, categoryformpage.jsp and category.jsp
+[33m917391e[m HEAD@{41}: checkout: moving from master to 190111category
+[33m917391e[m HEAD@{42}: merge 190111category: Fast-forward
+[33m1de9ab7[m HEAD@{43}: checkout: moving from 190111category to master
+[33m917391e[m HEAD@{44}: commit: category and vote controllers and validators
+[33m1de9ab7[m HEAD@{45}: rebase finished: refs/heads/190111category onto 1de9ab713748d4ab78483b6ba3f69a631d43f04d
+[33m1de9ab7[m HEAD@{46}: rebase: checkout master
+[33m5ce83b9[m HEAD@{47}: checkout: moving from master to 190111category
+[33m1de9ab7[m HEAD@{48}: pull: Fast-forward
+[33m5ce83b9[m HEAD@{49}: checkout: moving from 190111category to master
+[33m5ce83b9[m HEAD@{50}: reset: moving to HEAD
+[33m5ce83b9[m HEAD@{51}: checkout: moving from master to 190111category
+[33m5ce83b9[m HEAD@{52}: clone: from https://github.com/ZensoDev/TopaidiWeb.git

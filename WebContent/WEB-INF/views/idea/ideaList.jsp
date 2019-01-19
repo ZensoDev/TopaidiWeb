@@ -11,6 +11,10 @@
 <title>Ideas List</title>
 <jsp:include page="../include/header.jsp" />
 
+
+</head>
+
+<body>
 	<div class="container-fluid">
 		<table class="table table-hover">
 			<thead>
@@ -31,8 +35,9 @@
 						<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
 						<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>
 						<td><a class="btn btn-primary" href="show/${idea.idIdea}">Show idea</a></td>
+						</tr>
 					</c:forEach>
-						<td><a class="btn btn-primary" href="add">Add a new idea</a></td>
+						<tr><td><a class="btn btn-primary" href="add">Add a new idea</a></td>
 						</tr>
 			</tbody>
 						
