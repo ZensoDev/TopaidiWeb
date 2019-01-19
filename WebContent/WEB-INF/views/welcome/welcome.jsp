@@ -7,7 +7,7 @@
 .col-6 {border:1px solid red}
 .col-3 {border:1px solid blue}
 </style>
-<jsp:include page="../include/head.jsp" />
+<jsp:include page="../include/header.jsp" />
 <div class="container-fluid">
 <div class="row">
 		<div class="col-3">1 of 3</div>

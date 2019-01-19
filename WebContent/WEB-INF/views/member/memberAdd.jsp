@@ -6,19 +6,26 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajout d'un utilisateur</title>
+<jsp:include page="../include/header.jsp" />
+
 <spring:url value="/members/processForm" var="processUrl" />
 
 <form:form method="post" action="${processUrl}"
 	modelAttribute="memberform">
 	<div class="form-group">
 		<form:input path="idMember" type="hidden" />
+		<form:input path="state" type="hidden" value="false"/>
 	</div>
 	<div class="form-group">
 		<form:errors path="loginMail" cssStyle="color:red;" />
 		<form:label path="loginMail">login Mail</form:label>
 		<form:input path="loginMail" />
 	</div>
-        </div>
 	<div class="form-group">
 		<form:errors path="password" cssStyle="color:red;" />
 		<form:label path="password">password</form:label>

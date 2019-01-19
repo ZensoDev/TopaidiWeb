@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cgi.dao.IdeaDao;
 import com.cgi.dao.MemberDao;
@@ -44,10 +45,21 @@ public class MemberController {
 	}
 
 	@GetMapping("/connect")
-	public String connect(Model m, HttpSession session) {
-		System.out.println();
+	public String connect(@RequestParam(value="error",required=false) String error, Model m, HttpSession session) {
+		
 		m.addAttribute("connectform", new Member());
-
+		if(error!=null) {
+			m.addAttribute("error",error);
+		}
+		
+		Member member = (Member) session.getAttribute("member");
+		String redirect = null;
+		if(member.isAdmin()) {
+			redirect = "AdminGestionController/gestion";
+		} else {
+			redirect = "member/memberConnect";
+			
+		}
 		return "member/memberConnect";
 	}
 
@@ -65,10 +77,17 @@ public class MemberController {
 				if (member.getIdMember() == 0) {
 					memberDao.insert(member);
 					session.setAttribute("member", member);
+					String redirect = null;
+					if(member.isAdmin()) {
+						redirect = "redirect:AdminGestionController/gestion";
+					} else {
+						redirect = "redirect:/welcome/welcome";
+					}
+					return redirect;
 				} else {
 					memberDao.update(member);
 				}
-				return "welcome/welcome";
+				return "redirect:/welcome/welcome";
 			} else {
 				return "member/memberAdd";
 			}
@@ -85,16 +104,21 @@ public class MemberController {
 			return "member/memberConnect";
 		} else {
 			try {
-				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword()) == false) {
+				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword())) {
 					session.setAttribute("member", member);
-					return "welcome/welcome";
+					String redirect = null;
+					if(member.isAdmin()) {
+						redirect = "AdminGestionController/gestion";
+					} else {
+						redirect = "welcome/welcome";
+					}
+					return redirect;
+					
 				} else {
-					System.out.println("else");
 					return "member/memberConnect";
 				}
 			} catch (NoResultException e) {
-				System.out.println("catch");
-				return "redirect:/members/connect";
+				return "redirect:/members/connect?error=connectionFailed";
 			}
 		}
 	}
@@ -117,23 +141,25 @@ public class MemberController {
 
 		return "redirect:/members/list";
 	}
-
 	
-//	@GetMapping("activate/{idMember}")
-//	public String activate(Model m, @PathVariable(value = "idMember") int idMember) {
-//		Member member = memberDao.findByKey(idMember);
-//		member.isAdmin().setAdmin(true);
-//		memberDao.insert(member);
-//		return "redirect:/members/list";
-//	}
-//	
-//	@GetMapping("desactivate/{idMember}")
-//	public String desactivate(Model m, @PathVariable(value = "idMember") int idMember) {
-//		Member member = memberDao.findByKey(idMember);
-//		member.isAdmin().setAdmin(false);
-//		memberDao.insert(member);
-//		return "redirect:/members/list";
-//	}
+	@GetMapping("/deconnection")
+	public String deconnect(Model m, HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/welcome/welcome";
+	}
+	
+	@GetMapping("activeDesactive/{idMember}")
+	public void activeDesactive(Model m, @PathVariable(value = "idMember") int idMember) {
+		Member member = memberDao.findByKey(idMember);
+		if(member.isState()) {
+			member.setState(false);
+		} else {
+			member.setState(true);
+		}		
+	}
+	
+
 	
 	
 

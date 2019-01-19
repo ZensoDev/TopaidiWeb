@@ -5,6 +5,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajout d'une idée</title>
+<jsp:include page="../include/header.jsp" />
 
 <spring:url value="/ideas/processForm" var="processUrl" />
 <c:set var="now" value="<%=new java.util.Date()%>" />

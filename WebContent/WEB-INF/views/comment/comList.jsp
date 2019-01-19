@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Liste des commentaires</title>
+<jsp:include page="../include/header.jsp" />
 
 
 <div class="container">
