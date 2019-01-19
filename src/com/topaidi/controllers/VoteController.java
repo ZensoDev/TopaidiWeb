@@ -36,6 +36,11 @@ public class VoteController {
 	
 	@GetMapping("/add/{idIdea}/{voteEnum}")
 	public String add(@PathVariable(value = "voteEnum") VoteEnum voteEnum,@PathVariable(value = "idIdea") int idIdea, HttpSession session, Model model) {
+//		Member member = (Member) session.getAttribute("member");
+//		if (member.isAdmin()) {}
+		
+		
+		
 		Member member = mDao.findByKey(1);
 		Idea idea = iDao.findByKey(idIdea);
 		Vote vote = new Vote();

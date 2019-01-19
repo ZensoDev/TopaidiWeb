@@ -85,7 +85,7 @@ public class MemberController {
 			return "member/memberConnect";
 		} else {
 			try {
-				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword()) == false) {
+				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword()) == true) {
 					session.setAttribute("member", member);
 					return "welcome/welcome";
 				} else {
@@ -118,23 +118,15 @@ public class MemberController {
 		return "redirect:/members/list";
 	}
 
-	
-//	@GetMapping("activate/{idMember}")
-//	public String activate(Model m, @PathVariable(value = "idMember") int idMember) {
-//		Member member = memberDao.findByKey(idMember);
-//		member.isAdmin().setAdmin(true);
-//		memberDao.insert(member);
-//		return "redirect:/members/list";
-//	}
-//	
-//	@GetMapping("desactivate/{idMember}")
-//	public String desactivate(Model m, @PathVariable(value = "idMember") int idMember) {
-//		Member member = memberDao.findByKey(idMember);
-//		member.isAdmin().setAdmin(false);
-//		memberDao.insert(member);
-//		return "redirect:/members/list";
-//	}
-	
+	@GetMapping("activeDesactive/{idMember}")
+	public void activeDesactive(Model m, @PathVariable(value = "idMember") int idMember) {
+		Member member = memberDao.findByKey(idMember);
+		if(member.isState()) {
+			member.setState(false);
+		} else {
+			member.setState(true);
+		}		
+	}
 	
 
 }

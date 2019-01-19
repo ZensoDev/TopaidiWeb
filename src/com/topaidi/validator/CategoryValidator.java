@@ -18,8 +18,7 @@ public class CategoryValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		Category c = (Category) target;
 		ValidationUtils.rejectIfEmpty(errors, "name", "c.name.empty", "Le titre de la catégorie est vide");
-		//voir par quoi remplacer Yzma
-		if(c.getName().contentEquals("parcours de la liste, méthode contain"))
+		if(c.getName().contentEquals("méthode contain"))
 		{errors.rejectValue("name", "c.name", "Une catégorie porte déjà ce nom");}
 	}
 

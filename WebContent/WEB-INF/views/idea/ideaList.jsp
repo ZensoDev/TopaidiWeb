@@ -16,7 +16,7 @@
 
 </head>
 
-<body><jsp:include page="../include/adminNav.jsp"/>
+<body><jsp:include page="../include/adminNav.jsp" />
 	<div class="container-fluid">
 		<table class="table table-hover">
 			<thead>
@@ -36,15 +36,14 @@
 						<td>${idea.date}</td>
 						<td><a class="btn btn-primary" href="edit/${idea.idIdea}">Edit</a></td>
 						<td><a class="btn btn-primary" href="delete/${idea.idIdea}">Delete</a></td>
-						<td><a class="btn btn-primary" href="show/${idea.idIdea}">Show idea</a></td>
-					</c:forEach>
-						<td><a class="btn btn-primary" href="add">Add a new idea</a></td>
-						</tr>
+						<td><a class="btn btn-primary" href="show/${idea.idIdea}">Show
+								idea</a></td>
+				</c:forEach>
+				<td><a class="btn btn-primary" href="add">Add a new idea</a></td>
+				</tr>
 			</tbody>
-						
-		</table>
-		</div>
-		<br> <br> <br> <br> <br> <br>
-</body>
 
+		</table>
+	</div>
+</body>
 </html>
