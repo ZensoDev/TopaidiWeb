@@ -39,8 +39,15 @@ public class AdminGestionController {
 	 * First administration page
 	 */
 	@GetMapping("/gestion")
-	public String home() {
-		return "admin";
+	public String home(HttpSession session) {
+		Member member =memberDao.findByKey(((Member) session.getAttribute("member")).getIdMember());
+		String redirect = null;
+		if (member.isAdmin()) {
+			redirect = "admin";
+		} else {
+			redirect = "noadmin";
+		}
+		return redirect;
 	}
 
 	/*
@@ -167,10 +174,10 @@ public class AdminGestionController {
 	@GetMapping("/category")
 	public String list(HttpSession session, Model model) {
 		{
-			
-				List<Category> categoriesList = cDao.findAll();
-				model.addAttribute("categories", categoriesList);
-				return "categories/categorypage";
+
+			List<Category> categoriesList = cDao.findAll();
+			model.addAttribute("categories", categoriesList);
+			return "categories/categorypage";
 
 		}
 	}

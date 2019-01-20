@@ -28,11 +28,15 @@
 		<form:label path="title">Title</form:label>
 		<form:input path="title" />
 	</div>
-	<div>
-		<form:select path="category">
-			<form:options items="${categories}" itemLabel="name"
-				itemValue="name" />
-		</form:select>
+	<div class="form-group">
+		
+		<label for="sel1">Sélectionnez une catégorie :</label>
+        <form:select path="category.idCat" class="form-control" id="sel1">
+            <c:forEach items="${categories}" var="cat">
+                <option value="${cat.idCat}"> ${cat}</option>
+                <br>
+            </c:forEach>
+        </form:select>
 	</div>
 	<div class="form-group">
 		<form:errors path="description" cssStyle="color:red;" />

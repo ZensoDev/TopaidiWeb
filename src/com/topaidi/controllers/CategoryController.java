@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cgi.dao.CategoryDao;
 import com.cgi.dao.IdeaDao;
+import com.cgi.dao.MemberDao;
 import com.cgi.model.Category;
 import com.cgi.model.Idea;
 import com.cgi.model.Member;
@@ -30,6 +31,9 @@ public class CategoryController {
 
 	@Autowired
 	IdeaDao iDao;
+	
+	@Autowired
+	MemberDao mDao;
 
 	/*
 	 * Method to display categories
@@ -115,14 +119,10 @@ public class CategoryController {
 	 */
 
 	@GetMapping("/delete/{idCat}")
-	public String delete(@PathVariable("idCat") int idCategory, HttpSession session, Model model) {
-		Member member = (Member) session.getAttribute("member");
-		if (member.isAdmin()) {
-			cDao.delete(cDao.findByKey(idCategory));
-			return "redirect:/categories/list";
-		} else {
-			return "noadmin";
-		}
+	public String delete(@PathVariable("idCat") int idCat, HttpSession session, Model model) {
+		
+			cDao.delete(cDao.findByKey(idCat));
+			return "redirect:../../admin/category";
 
 	}
 

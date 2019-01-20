@@ -51,15 +51,6 @@ public class MemberController {
 		if(error!=null) {
 			m.addAttribute("error",error);
 		}
-		
-//		Member member = (Member) session.getAttribute("member");
-//		String redirect = null;
-//		if(member.isAdmin()) {
-//			redirect = "AdminGestionController/gestion";
-//		} else {
-//			redirect = "member/memberConnect";
-//			
-//		}
 		return "member/memberConnect";
 	}
 
