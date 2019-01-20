@@ -56,7 +56,7 @@ public class IdeaController {
 	@GetMapping("/add")
 	public String insert(HttpSession session, Model m) {
 		if(session.getAttribute("member") == null) {
-			return "redirect:/members/add";
+			return "redirect:/members/connect";
 		}
 		
 		Member member = (Member) session.getAttribute("member");

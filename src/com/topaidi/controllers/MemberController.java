@@ -52,14 +52,14 @@ public class MemberController {
 			m.addAttribute("error",error);
 		}
 		
-		Member member = (Member) session.getAttribute("member");
-		String redirect = null;
-		if(member.isAdmin()) {
-			redirect = "AdminGestionController/gestion";
-		} else {
-			redirect = "member/memberConnect";
-			
-		}
+//		Member member = (Member) session.getAttribute("member");
+//		String redirect = null;
+//		if(member.isAdmin()) {
+//			redirect = "AdminGestionController/gestion";
+//		} else {
+//			redirect = "member/memberConnect";
+//			
+//		}
 		return "member/memberConnect";
 	}
 
@@ -79,15 +79,15 @@ public class MemberController {
 					session.setAttribute("member", member);
 					String redirect = null;
 					if(member.isAdmin()) {
-						redirect = "redirect:AdminGestionController/gestion";
+						redirect = "redirect:../admin/gestion";
 					} else {
-						redirect = "redirect:/welcome/welcome";
+						redirect = "redirect:../welcome/welcome";
 					}
 					return redirect;
 				} else {
 					memberDao.update(member);
 				}
-				return "redirect:/welcome/welcome";
+				return "redirect:../welcome/welcome";
 			} else {
 				return "member/memberAdd";
 			}
@@ -105,13 +105,14 @@ public class MemberController {
 		} else {
 			try {
 
-				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword()) == false) {
-					session.setAttribute("member", member);
+				if (memberDao.existingMailPwd(member.getLoginMail(), member.getPassword()) == true) {
+					Member memberUsed = memberDao.findByMailMember(member.getLoginMail());
+					session.setAttribute("member", memberUsed);
 					String redirect = null;
-					if(member.isAdmin()) {
-						redirect = "AdminGestionController/gestion";
+					if(memberUsed.isAdmin()) {
+						redirect = "redirect:../admin/gestion";
 					} else {
-						redirect = "welcome/welcome";
+						redirect = "redirect:../welcome/welcome";
 					}
 					return redirect;
 					
@@ -162,6 +163,15 @@ public class MemberController {
 		}		
 	}
 
-	
+	@GetMapping("admin/{idMember}")
+	public String admin(Model m, @PathVariable(value = "idMember") int idMember) {
+		Member member = memberDao.findByKey(idMember);
+		if(member.isAdmin()) {
+			memberDao.activateAdmin(member);
+		} else {
+			memberDao.desactivateAdmin(member);
+		}		
+		return "member/memberList";
+	}
 
 }
