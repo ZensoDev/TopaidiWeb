@@ -10,7 +10,7 @@
 <body><jsp:include page="../include/adminNav.jsp"/>
 <ul>
  		<c:forEach items="${categories}" var="cat">
- 				<li>${cat.idCat} : ${cat.name} <a href="deleteCat/${cat.idCat}">Suppression</a> <a href="updateCat/${cat.idCat}">Edit</a>
+ 				<li>${cat.idCat} : ${cat.name} <a href="../categories/delete/${cat.idCat}">Supprimer</a> <a href="updateCat/${cat.idCat}">Edit</a>
  				</li>
  			</c:forEach>
  		</ul>
