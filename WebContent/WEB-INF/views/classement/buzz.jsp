@@ -13,13 +13,8 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<<<<<<< Updated upstream
+
 <ul>
- 		<c:forEach items="${buzz}" var="buzz">
- 				<li>
- 				${buzz.idIdea} : ${buzz.title}
- 				</li>
- 			</c:forEach>
  		</ul>
 =======
 
@@ -32,7 +27,19 @@
 				<th scope="col">Nombre de vote</th>
 			</tr>
 		</thead>
+		<tbody>
+ 		<c:forEach items="${buzz}" var="buzz">
+ 		<tr>
+ 				
+ 				<td>${buzz.key.title}</td>
+ 				<td>${buzz.key.category}</td>
+ 				<td>${buzz.value}</td>
+ 				<td>${buzz.value}</td>
+ 				
+ 			</c:forEach>
+ 		</tr>
+		</tbody>
 	</table>
->>>>>>> Stashed changes
+
 </body>
 </html>

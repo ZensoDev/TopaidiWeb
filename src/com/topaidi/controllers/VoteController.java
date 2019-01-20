@@ -59,6 +59,7 @@ public class VoteController {
 	
 		return "redirect:/ideas/show/{idIdea}";
 	}
+	
 
 }
 

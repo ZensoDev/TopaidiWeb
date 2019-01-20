@@ -18,7 +18,7 @@
 <form:form method="post" action="${processUrl}"
 	modelAttribute="ideaform">
 	<div class="form-group">
-		<form:input path="idIdea" type="hidden" />
+		
 	</div>
 	<div class="form-group">
 		<form:input path="state" type="hidden" value="true"/>

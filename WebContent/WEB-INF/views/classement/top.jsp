@@ -13,23 +13,6 @@
 </head>
 <body>
 
-<<<<<<< Updated upstream
- 		
-  		<ul>
- 		<c:forEach items="${tops}" var="top">
- 				<li> ${top.idIdea} : ${top.title}
- 				</li>
- 			</c:forEach>
- 		</ul> 
-=======
-	test pour affichage page Image taille 200 x 200 px
-	<br>
-	<img src="http://www.mathly.fr/images/sun.jpg">
-	<br> Image redimentionnée : 150 x 90px
-	<br>
-	<div
-		style="width: 150px; height: 90px; background: url('http://www.mathly.fr/images/sun.jpg'); background-size: contain; background-repeat: no-repeat;"></div>
-
 	<table class="table">
 		<thead>
 			<tr>
@@ -39,7 +22,17 @@
 				<th scope="col">Nombre de vote</th>
 			</tr>
 		</thead>
+ 		<tbody>
+ 		<c:forEach items="${tops}" var="top">
+ 		<tr>
+ 				<td> ${top.key.title}</td>
+ 				<td> ${top.key.category.name}</td>
+ 			<td> ${top.value}</td>
+ 			<td> ${top.value}</td>
+ 				
+ 		</tr>
+ 			</c:forEach>
+ 		</tbody>
 	</table>
->>>>>>> Stashed changes
 </body>
 </html>
