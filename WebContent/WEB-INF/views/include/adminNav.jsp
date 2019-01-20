@@ -25,7 +25,7 @@
         <a class="nav-link" href="../admin/category">Catégories <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-       <div class="deco"> <a class="nav-link" href="../members/deconnection">Déconnexion</a></div>
+       <div class="deco"> <a class="nav-link" href="http://localhost:8080/TopaidiWeb/members/deconnection">Déconnexion</a></div>
       </li>
     </ul>
   </div>

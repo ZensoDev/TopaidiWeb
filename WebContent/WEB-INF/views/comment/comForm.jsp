@@ -32,7 +32,7 @@
 
 				<div class="form-group row">
 					<form:errors path="text" cssStyle="color:red;"></form:errors>
-					<form:label path="text" class="col-sm-2 col-form-label" >Commentaire : </form:label>
+					<form:label path="text" class="col-sm-2 col-form-label" >Commentaire </form:label>
 					<div class="col-sm-10">
 						<form:input path="text" class="form-control" type="message"/>
 					</div>
@@ -50,5 +50,18 @@
 		<div class="col-sm-2"></div>
 	</div>
 </div>
-</body>
-</html>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<jsp:include page="../include/footer.jsp" />

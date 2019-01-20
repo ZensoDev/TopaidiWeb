@@ -76,8 +76,6 @@ public class IdeaController {
 		idea.setMember(member);
 		m.addAttribute("categories", catDao.findAll());
 		
-		System.out.println(idea);
-		
 		if (result.hasErrors()) {
 			return "idea/ideaAdd";
 		} else {

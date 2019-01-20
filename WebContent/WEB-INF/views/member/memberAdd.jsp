@@ -13,41 +13,65 @@
 <title>Ajout d'un utilisateur</title>
 <jsp:include page="../include/header.jsp" />
 
-<spring:url value="/members/processForm" var="processUrl" />
 
-<form:form method="post" action="${processUrl}"
-	modelAttribute="memberform">
-	<div class="form-group">
-		<form:input path="admin" type="hidden" />
-		<form:input path="state" type="hidden" />
-	</div>
-	<div class="form-group">
-		<form:errors path="loginMail" cssStyle="color:red;" />
-		<form:label path="loginMail">login Mail</form:label>
-		<form:input path="loginMail" />
-	</div>
-	<div class="form-group">
-		<form:errors path="password" cssStyle="color:red;" />
-		<form:label path="password">password</form:label>
-		<form:input path="password" />
-	</div>
-	<div class="form-group">
-		<form:errors path="lastName" cssStyle="color:red;" />
-		<form:label path="lastName">last Name</form:label>
-		<form:input path="lastName" />
-	</div>
-	<div class="form-group">
-		<form:errors path="firstName" cssStyle="color:red;" />
-		<form:label path="firstName">First Name</form:label>
-		<form:input path="firstName" />
-	</div>
-	<div class="form-group">
-		
-	</div>
-  	<input type="submit" value="Add">
-</form:form>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6 text-center">
+			<br> <br>
+			<h1>Ajout d'un utilisateur</h1>
+			<br>
 
 
-</body>
+			<spring:url value="/members/processForm" var="processUrl" />
 
-</html>
+			<form:form method="post" action="${processUrl}"
+				modelAttribute="memberform">
+				<div class="form-group row">
+					<form:input path="admin" type="hidden" />
+					<form:input path="state" type="hidden" />
+				</div>
+				<div class="form-group row">
+					<form:errors path="loginMail" cssStyle="color:red;" />
+					<form:label path="loginMail" class="col-sm-2 col-form-label">Adresse email :</form:label>
+
+					<div class="col-sm-10">
+						<form:input path="loginMail" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<form:errors path="password" cssStyle="color:red;" />
+					<form:label path="password" class="col-sm-2 col-form-label">Mot de passe :</form:label>
+					<div class="col-sm-10">
+						<form:input path="password" class="form-control" type="password"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<form:errors path="lastName" cssStyle="color:red;" />
+					<form:label path="lastName" class="col-sm-2 col-form-label">Nom :</form:label>
+					<div class="col-sm-10">
+						<form:input path="lastName" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<form:errors path="firstName" cssStyle="color:red;" />
+					<form:label path="firstName" class="col-sm-2 col-form-label">Prénom :</form:label>
+					<div class="col-sm-10">
+						<form:input path="firstName" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group row">
+				<div class="col-sm-10">
+					<input type="submit" class="btn btn-primary" value="S'inscrire">
+				</div>
+			</form:form>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<jsp:include page="../include/footer.jsp" />

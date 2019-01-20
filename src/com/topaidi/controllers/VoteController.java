@@ -36,12 +36,8 @@ public class VoteController {
 	
 	@GetMapping("/add/{idIdea}/{voteEnum}")
 	public String add(@PathVariable(value = "voteEnum") VoteEnum voteEnum,@PathVariable(value = "idIdea") int idIdea, HttpSession session, Model model) {
-//		Member member = (Member) session.getAttribute("member");
-//		if (member.isAdmin()) {}
-		
-		
-		
-		Member member = mDao.findByKey(1);
+	
+		Member member =mDao.findByKey(((Member) session.getAttribute("member")).getIdMember());
 		Idea idea = iDao.findByKey(idIdea);
 		Vote vote = new Vote();
 		vote.setIdea(idea);
@@ -51,8 +47,8 @@ public class VoteController {
 			voteEnum.setMark(1);
 			vote.setVoteEnum(voteEnum);
 			vDao.insert(vote);
-		}else if(voteEnum.getMark()==2) {
-			voteEnum.setMark(2);
+		}else if(voteEnum.getMark()==0) {
+			voteEnum.setMark(0);
 			vote.setVoteEnum(voteEnum);
 			vDao.insert(vote);
 		}
